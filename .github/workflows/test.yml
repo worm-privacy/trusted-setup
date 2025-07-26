@@ -22,4 +22,4 @@ jobs:
 
       - name: Contribute
         run: |
-          make contribute
+          make contribute WGET_ARGS=-q
