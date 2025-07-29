@@ -21,12 +21,12 @@ contribute:
 	rm -rf params_old/*.tar.gz params_old/*.tar.gz.*
 
 	@echo "Contributing to Proof-of-Burn parameters..."
-	@snarkjs zkey contribute params_old/proof_of_burn.zkey params_new/proof_of_burn.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)"
+	@snarkjs zkey contribute params_old/proof_of_burn.zkey params_new/proof_of_burn.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)" | tee proof_of_burn_logs.txt
 
 	@echo "Contributing to Spend parameters..."
-	@snarkjs zkey contribute params_old/spend.zkey params_new/spend.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)"
+	@snarkjs zkey contribute params_old/spend.zkey params_new/spend.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)" | tee spend_logs.txt
 
-	cd params_new && tar czf params_new.tar.gz *.zkey
+	cd params_new && tar czf params_new.tar.gz *.zkey *_logs.txt
 	cd params_new && split -b1G params_new.tar.gz params_new.tar.gz.
 
 	@echo "$(PERSONAL_GH_TOKEN)" | gh auth login --with-token
