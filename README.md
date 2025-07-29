@@ -1,6 +1,8 @@
 # Trusted Setup
 
-Scripts used to perform the trusted-setup ceremony of WORM Privacy circuits.
+Scripts used to perform the trusted setup ceremony for WORM Privacy circuits.
+
+⚠️ Contributing to all circuits is expected to take at least one hour! ⚠️
 
 ## Step 1. Install the requirements
 
@@ -9,17 +11,20 @@ Scripts used to perform the trusted-setup ceremony of WORM Privacy circuits.
 
 ## Step 2. Get a GitHub token
 
-1. Go to **Settings** section of your GitHub profile.
-2. Go to **Developer settings**.
-3. Select **Personal access token** and then **Tokens (classic)**.
-4. Now select **Generate new token (classic)**.
-5. Choose all of the permissions.
+1. Go to the **Settings** section of your GitHub profile.
+2. Navigate to **Developer settings**.
+3. Select **Personal access token**, then choose **Tokens (classic)**.
+4. Click **Generate new token (classic)**.
+5. Select all necessary permissions and generate the token.
 6. Store the token somewhere, you'll need it later!
 
 ## Step 3.  Fork this repository
 
-1. Click on the **Fork** button of this repository.
-2. Clone the forked version of this repository on your machine: `https://github.com/[YOUR GITHUB USERNAME]/trusted-setup`
+1. Click the **Fork** button at the top of this repository’s page.
+2. Clone your forked repository to your local machine using the following command:
+   ```bash
+   git clone https://github.com/[YOUR_GITHUB_USERNAME]/trusted-setup
+   ```
 
 ## Step 4. Participate
 
