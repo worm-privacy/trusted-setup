@@ -43,11 +43,11 @@ contribute:
 
 	@cd params_new && echo "SnarkJS logs for Proof-of-Burn circuit:\n" > notes.md
 	@cd params_new && echo "\`\`\`" >> notes.md
-	@cd params_new && cat proof_of_burn_logs.txt >> notes.md
+	@cd params_new && cat ../proof_of_burn_logs.txt >> notes.md
 	@cd params_new && echo "\`\`\`" >> notes.md
 	@cd params_new && echo "\nSnarkJS logs for Spend circuit:\n" >> notes.md
 	@cd params_new && echo "\`\`\`" >> notes.md
-	@cd params_new && cat spend_logs.txt >> notes.md
+	@cd params_new && cat ../spend_logs.txt >> notes.md
 	@cd params_new && echo "\`\`\`" >> notes.md
 
 	@echo "Uploading your contribution on GitHub..."
