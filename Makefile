@@ -15,12 +15,15 @@ contribute:
 	cat params_old/params.tar.gz.a* > params_old/params.tar.gz
 	cd params_old && tar xzf params.tar.gz
 
-	echo "Contributing to Proof-of-Burn parameters..."
-	snarkjs zkey contribute params_old/proof_of_burn.zkey params_new/proof_of_burn.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)"
+	#echo "Contributing to Proof-of-Burn parameters..."
+	#snarkjs zkey contribute params_old/proof_of_burn.zkey params_new/proof_of_burn.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)"
 
 	echo "Contributing to Spend parameters..."
 	snarkjs zkey contribute params_old/spend.zkey params_new/spend.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)"
 
 	cd params_new && tar czf params_new.tar.gz *.zkey
 	cd params_new && split -b1G params_new.tar.gz
+
+	gh auth login --with-token $(GH_TOKEN)
+	cd params_new && gh release create $(NAME) params_new.tar.gz.*
 	echo "Done!"
