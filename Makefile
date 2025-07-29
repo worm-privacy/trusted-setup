@@ -17,8 +17,8 @@ contribute:
 
 	rm -rf params_old/*.tar.gz params_old/*.tar.gz.*
 
-	#echo "Contributing to Proof-of-Burn parameters..."
-	#snarkjs zkey contribute params_old/proof_of_burn.zkey params_new/proof_of_burn.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)"
+	echo "Contributing to Proof-of-Burn parameters..."
+	snarkjs zkey contribute params_old/proof_of_burn.zkey params_new/proof_of_burn.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)"
 
 	echo "Contributing to Spend parameters..."
 	snarkjs zkey contribute params_old/spend.zkey params_new/spend.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)"
