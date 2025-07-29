@@ -13,6 +13,9 @@ contribute:
 	cat params_old/params.tar.gz.a* > params_old/params.tar.gz
 	cd params_old && tar xzf params.tar.gz
 	mv params_old/*.zkey params_new
+
+	cd params_new && snarkjs zkey contribute proof_of_burn.zkey proof_of_burn2.zkey --name="1st Contributor Name" -v --entropy="SOME ENTROPY"
+
 	cd params_new && tar czf params_new.tar.gz *.zkey
 	cd params_new && split -b1G params_new.tar.gz
 	echo "Done!"
