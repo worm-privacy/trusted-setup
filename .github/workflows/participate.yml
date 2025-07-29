@@ -29,7 +29,7 @@ jobs:
         run: |
           wget -q https://github.com/cli/cli/releases/download/v2.76.1/gh_2.76.1_linux_amd64.deb
 
-      - name: Download GitHub CLI
+      - name: Install GitHub CLI
         run: |
           sudo dpkg -i gh_2.76.1_linux_amd64.deb
 
