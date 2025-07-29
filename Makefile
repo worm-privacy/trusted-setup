@@ -53,5 +53,5 @@ contribute:
 	@echo "Uploading your contribution on GitHub..."
 
 	@echo "$(PERSONAL_GH_TOKEN)" | gh auth login --with-token
-	cd params_new && gh release create $(NAME) --title "$(NAME)'s contribution" --notes-file notes.md params_new.tar.gz.* *_logs.txt
+	cd params_new && gh release create $(NAME) --title "$(NAME)'s contribution" --notes-file notes.md params_new.tar.gz.* ../*_logs.txt
 	@echo "Done!"
