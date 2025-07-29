@@ -26,5 +26,6 @@ contribute:
 	cd params_new && tar czf params_new.tar.gz *.zkey
 	cd params_new && split -b1G params_new.tar.gz params_new.tar.gz.
 
+	echo "$(GH_TOKEN)" | gh auth login --with-token
 	cd params_new && gh release create $(NAME) params_new.tar.gz.*
 	echo "Done!"
