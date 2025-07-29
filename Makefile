@@ -1,6 +1,7 @@
 .PHONY=contribute
 
-CONTRIB_NUMBER := 0001
+CONTRIB_NUMBER := 1
+POSTFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
 WGET_ARGS := -q --show-progress
@@ -55,4 +56,28 @@ contribute:
 
 	@echo "$(PERSONAL_GH_TOKEN)" | gh auth login --with-token
 	cd params_$(CONTRIB_NUMBER) && gh release create $(NAME) --title "$(NAME)'s contribution" --notes-file notes.md params_$(CONTRIB_NUMBER).tar.gz.* ../*_logs.txt
+	
+	mkdir -p $(POSTFIX)_$(NAME)
+	mv params_$(CONTRIB_NUMBER)/notes.md $(POSTFIX)_$(NAME)/notes.md
+	
+	@awk '\
+		/^CONTRIB_NUMBER[[:space:]]*:=/ { \
+			split($$0, a, ":="); \
+			num = a[2]; \
+			gsub(/^[ \t]+/, "", num); \
+			num += 1; \
+			print "CONTRIB_NUMBER := " num; \
+			next; \
+		} \
+		{ print $$0; } \
+	' Makefile > Makefile.tmp && mv Makefile.tmp Makefile
+	git checkout -b contrib/$(NAME)
+	git add $(POSTFIX)_$(NAME)
+	git add Makefile
+	git commit -m "feat: Add $(NAME)'s contribution"
+	git push origin contrib/$(NAME)
+
+	@echo "Creating PR..."
+	gh pr create --head $(NAME):contrib/$(NAME) --base main --repo worm-privacy/trusted-setup
+
 	@echo "Done!"
