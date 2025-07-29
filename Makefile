@@ -22,7 +22,7 @@ contribute:
 	snarkjs zkey contribute params_old/spend.zkey params_new/spend.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)"
 
 	cd params_new && tar czf params_new.tar.gz *.zkey
-	cd params_new && split -b1G params_new.tar.gz
+	cd params_new && split -b1G params_new.tar.gz params_new.tar.gz.
 
 	#GH_TOKEN=$(GH_TOKEN) gh auth login
 	cd params_new && gh release create $(NAME) params_new.tar.gz.*
