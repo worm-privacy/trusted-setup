@@ -23,7 +23,7 @@ jobs:
       - name: Install SnarkJS
         run: |
           npm i -g snarkjs
-          
+
       - name: Install requirements
         run: |
           sudo apt install -y wget
@@ -34,7 +34,7 @@ jobs:
 
       - name: Download GitHub CLI
         run: |
-          dpkg -i gh_2.76.1_linux_386.deb
+          sudo dpkg -i gh_2.76.1_linux_386.deb
 
       - name: Contribute
         run: |
