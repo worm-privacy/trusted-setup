@@ -14,6 +14,8 @@ contribute:
 	echo "Extracting parameter files..."
 	cat params_old/params.tar.gz.a* > params_old/params.tar.gz
 	cd params_old && tar xzf params.tar.gz
+	
+	rm -rf params_old/*.tar.gz params_old/*.tar.gz.*
 
 	#echo "Contributing to Proof-of-Burn parameters..."
 	#snarkjs zkey contribute params_old/proof_of_burn.zkey params_new/proof_of_burn.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)"
