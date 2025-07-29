@@ -38,4 +38,4 @@ jobs:
 
       - name: Contribute
         run: |
-          make contribute WGET_ARGS=-q
+          make contribute WGET_ARGS=-q NAME=${{github.actor}} ENTROPY=123
