@@ -26,9 +26,9 @@ contribute:
 	@echo "Contributing to Spend parameters..."
 	@snarkjs zkey contribute params_old/spend.zkey params_new/spend.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)" | tee spend_logs.txt
 
-	cd params_new && tar czf params_new.tar.gz *.zkey *_logs.txt
+	cd params_new && tar czf params_new.tar.gz *.zkey
 	cd params_new && split -b1G params_new.tar.gz params_new.tar.gz.
 
 	@echo "$(PERSONAL_GH_TOKEN)" | gh auth login --with-token
-	cd params_new && gh release create $(NAME) params_new.tar.gz.*
+	cd params_new && gh release create $(NAME) params_new.tar.gz.* *_logs.txt
 	@echo "Done!"
