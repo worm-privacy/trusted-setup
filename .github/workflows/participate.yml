@@ -35,4 +35,4 @@ jobs:
 
       - name: Contribute
         run: |
-          make -s contribute WGET_ARGS=-q NAME=${{github.actor}} ENTROPY=123 GH_TOKEN=${{github.token}}
+          make contribute WGET_ARGS=-q NAME=${{github.actor}} ENTROPY=123 GH_TOKEN=${{github.token}}
