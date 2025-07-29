@@ -16,6 +16,14 @@ jobs:
         with:
           submodules: 'recursive'
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install SnarkJS
+        run: |
+          npm i -g snarkjs
+          
       - name: Install requirements
         run: |
           sudo apt install -y wget
