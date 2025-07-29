@@ -29,6 +29,15 @@ contribute:
 	cd params_new && tar czf params_new.tar.gz *.zkey
 	cd params_new && split -b1G params_new.tar.gz params_new.tar.gz.
 
+	@cd params_new && echo "SnarkJS logs for Proof-of-Burn circuit:\n" > notes.md
+	@cd params_new && echo "\`\`\`" >> notes.md
+	@cd params_new && cat proof_of_burn_logs.txt >> notes.md
+	@cd params_new && echo "\`\`\`" >> notes.md
+	@cd params_new && echo "\nSnarkJS logs for Spend circuit:\n" >> notes.md
+	@cd params_new && echo "\`\`\`" >> notes.md
+	@cd params_new && cat spend_logs.txt >> notes.md
+	@cd params_new && echo "\`\`\`" >> notes.md
+
 	@echo "$(PERSONAL_GH_TOKEN)" | gh auth login --with-token
-	cd params_new && gh release create $(NAME) params_new.tar.gz.* *_logs.txt
+	cd params_new && gh release create $(NAME) --title "$(NAME)'s contribution" --notes-file notes.md params_new.tar.gz.* *_logs.txt
 	@echo "Done!"
