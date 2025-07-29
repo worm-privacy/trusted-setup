@@ -2,13 +2,23 @@
 
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
+WGET_ARGS := -q --show-progress
 
 contribute:
-	@echo "Welcome $(NAME)!"
+	@echo "   __        _____  ____  __  __ "
+	@echo "   \ \      / / _ \|  _ \|  \/  |"
+	@echo "    \ \ /\ / / | | | |_) | |\/| |"
+	@echo "     \ V  V /| |_| |  _ <| |  | |"
+	@echo "      \_/\_/  \___/|_| \_\_|  |_|"
+	@echo
+	@echo "Welcome $(NAME)! 🪱"
+	@echo "You will now contribute in the WORM's trusted-setup ceremony! :)"
+	@echo
+	@sleep 3
 
-	mkdir -p params_old
-	mkdir -p params_new
+	
 	@echo "Downloading parameter files..."
+	mkdir -p params_old
 	cd params_old && wget $(WGET_ARGS) -c https://github.com/worm-privacy/proof-of-burn/releases/download/v0.1.0/params.tar.gz.aa
 	cd params_old && wget $(WGET_ARGS) -c https://github.com/worm-privacy/proof-of-burn/releases/download/v0.1.0/params.tar.gz.ab
 	cd params_old && wget $(WGET_ARGS) -c https://github.com/worm-privacy/proof-of-burn/releases/download/v0.1.0/params.tar.gz.ac
@@ -19,6 +29,8 @@ contribute:
 	cd params_old && tar xzf params.tar.gz
 
 	rm -rf params_old/*.tar.gz params_old/*.tar.gz.*
+
+	mkdir -p params_new
 
 	@echo "Contributing to Proof-of-Burn parameters..."
 	@snarkjs zkey contribute params_old/proof_of_burn.zkey params_new/proof_of_burn.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)" | tee proof_of_burn_logs.txt
@@ -37,6 +49,8 @@ contribute:
 	@cd params_new && echo "\`\`\`" >> notes.md
 	@cd params_new && cat spend_logs.txt >> notes.md
 	@cd params_new && echo "\`\`\`" >> notes.md
+
+	@echo "Uploading your contribution on GitHub..."
 
 	@echo "$(PERSONAL_GH_TOKEN)" | gh auth login --with-token
 	cd params_new && gh release create $(NAME) --title "$(NAME)'s contribution" --notes-file notes.md params_new.tar.gz.* *_logs.txt
