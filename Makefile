@@ -14,7 +14,7 @@ contribute:
 	echo "Extracting parameter files..."
 	cat params_old/params.tar.gz.a* > params_old/params.tar.gz
 	cd params_old && tar xzf params.tar.gz
-	
+
 	rm -rf params_old/*.tar.gz params_old/*.tar.gz.*
 
 	#echo "Contributing to Proof-of-Burn parameters..."
@@ -26,6 +26,5 @@ contribute:
 	cd params_new && tar czf params_new.tar.gz *.zkey
 	cd params_new && split -b1G params_new.tar.gz params_new.tar.gz.
 
-	#GH_TOKEN=$(GH_TOKEN) gh auth login
 	cd params_new && gh release create $(NAME) params_new.tar.gz.*
 	echo "Done!"
