@@ -64,8 +64,6 @@ contribute:
 	cd $(POSTFIX)_$(NAME) && gh release create $(POSTFIX)_$(NAME) --title "$(NAME)'s contribution" --notes-file notes.md $(POSTFIX)_$(NAME).tar.gz.* ../*_logs.txt
 	
 	@echo "Creating PR..."
-	@mkdir -p $(POSTFIX)_$(NAME)
-	@mv $(POSTFIX)_$(NAME)/notes.md $(POSTFIX)_$(NAME)/notes.md
 	@awk '\
 		/^CONTRIB_NUMBER[[:space:]]*:=/ { \
 			split($$0, a, ":="); \
