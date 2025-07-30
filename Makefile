@@ -93,10 +93,8 @@ contribute:
 		{ print } \
 		' Makefile > Makefile.new && mv Makefile.new Makefile
 
-	@rm -rf $(POSTFIX)_$(NAME)/*.tar.gz*
-
 	@git checkout -b contrib/$(NAME)
-	@git add $(POSTFIX)_$(NAME)
+	@git add $(POSTFIX)_$(NAME)/notes.md
 	@git add Makefile
 	@git config user.name "github-actions[bot]"
 	@git config user.email "github-actions[bot]@users.noreply.github.com"
