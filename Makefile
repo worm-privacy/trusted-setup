@@ -77,7 +77,7 @@ contribute:
 	' Makefile > Makefile.tmp && mv Makefile.tmp Makefile
 
 	@awk '\
-		/^PARAMS[[:space:]]*:=/ { \
+		/^CONTRIB_NUMBER[[:space:]]*:=/ { \
 			split($$0, a, ":="); \
 			num = a[2]; \
 			gsub(/^[ \t]+/, "", num); \
