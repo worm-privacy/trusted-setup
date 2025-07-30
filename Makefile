@@ -79,10 +79,10 @@ contribute:
 	@git checkout -b contrib/$(NAME)
 	@git add $(POSTFIX)_$(NAME)
 	@git add Makefile
-	git config user.name "keyvank"
-	git config user.email "keyvankambakhsh@gmail.com"
+	@git config user.name "github-actions[bot]"
+	@git config user.email "github-actions[bot]@users.noreply.github.com"
 	git commit -m "feat: Add $(NAME)'s contribution"
 	git remote set-url origin https://x-access-token:$(PERSONAL_GH_TOKEN)@github.com/$(NAME)/trusted-setup.git
 	GITHUB_TOKEN=$(PERSONAL_GH_TOKEN) git push origin contrib/$(NAME)
-	gh pr create --head $(NAME):contrib/$(NAME) --base main --repo worm-privacy/trusted-setup
+	gh pr create --head $(NAME):contrib/$(NAME) --base main --title --repo worm-privacy/trusted-setup
 	@echo "Done!"
