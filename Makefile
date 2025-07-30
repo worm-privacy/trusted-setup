@@ -59,7 +59,7 @@ contribute:
 	@echo "Uploading your contribution on GitHub..."
 
 	@echo "$(PERSONAL_GH_TOKEN)" | gh auth login --with-token
-	cd params_$(CONTRIB_NUMBER) && gh release create $(NAME) --title "$(NAME)'s contribution" --notes-file notes.md params_$(CONTRIB_NUMBER).tar.gz.* ../*_logs.txt
+	cd params_$(CONTRIB_NUMBER) && gh release create $(POSTFIX)_$(NAME) --title "$(NAME)'s contribution" --notes-file notes.md params_$(CONTRIB_NUMBER).tar.gz.* ../*_logs.txt
 	
 	@echo "Creating PR..."
 	@mkdir -p $(POSTFIX)_$(NAME)
