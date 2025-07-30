@@ -36,9 +36,8 @@ contribute:
 
 	mkdir -p params_$(CONTRIB_NUMBER)
 
-	#@echo "Contributing to Proof-of-Burn parameters..."
-	#@snarkjs zkey contribute params_old/proof_of_burn.zkey params_$(CONTRIB_NUMBER)/proof_of_burn.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)" | tee proof_of_burn_logs.txt
-	echo "Empty" > proof_of_burn_logs.txt
+	@echo "Contributing to Proof-of-Burn parameters..."
+	@snarkjs zkey contribute params_old/proof_of_burn.zkey params_$(CONTRIB_NUMBER)/proof_of_burn.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)" | tee proof_of_burn_logs.txt
 
 	@echo "Contributing to Spend parameters..."
 	@snarkjs zkey contribute params_old/spend.zkey params_$(CONTRIB_NUMBER)/spend.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)" | tee spend_logs.txt
