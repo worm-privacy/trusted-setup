@@ -79,7 +79,7 @@ contribute:
 	git add $(POSTFIX)_$(NAME)
 	git add Makefile
 	git config user.name "github-actions[bot]"
-    git config user.email "github-actions[bot]@users.noreply.github.com"
+	git config user.email "github-actions[bot]@users.noreply.github.com"
 	git commit -m "feat: Add $(NAME)'s contribution"
 	git push origin contrib/$(NAME)
 
