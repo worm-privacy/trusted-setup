@@ -7,6 +7,9 @@ NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[
 WGET_ARGS := -q --show-progress
 
 contribute:
+	@echo "$(PERSONAL_GH_TOKEN)" | gh auth login --with-token
+	echo "$(gh api user --jq .login)"
+	echo "$(gh api user --jq .email)"
 	@echo "   __        _____  ____  __  __ "
 	@echo "   \ \      / / _ \|  _ \|  \/  |"
 	@echo "    \ \ /\ / / | | | |_) | |\/| |"
@@ -58,7 +61,6 @@ contribute:
 
 	@echo "Uploading your contribution on GitHub..."
 
-	@echo "$(PERSONAL_GH_TOKEN)" | gh auth login --with-token
 	cd params_$(CONTRIB_NUMBER) && gh release create $(POSTFIX)_$(NAME) --title "$(NAME)'s contribution" --notes-file notes.md params_$(CONTRIB_NUMBER).tar.gz.* ../*_logs.txt
 	
 	@echo "Creating PR..."
