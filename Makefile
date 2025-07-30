@@ -61,9 +61,9 @@ contribute:
 	@echo "$(PERSONAL_GH_TOKEN)" | gh auth login --with-token
 	cd params_$(CONTRIB_NUMBER) && gh release create $(NAME) --title "$(NAME)'s contribution" --notes-file notes.md params_$(CONTRIB_NUMBER).tar.gz.* ../*_logs.txt
 	
-	mkdir -p $(POSTFIX)_$(NAME)
-	mv params_$(CONTRIB_NUMBER)/notes.md $(POSTFIX)_$(NAME)/notes.md
-	
+	@echo "Creating PR..."
+	@mkdir -p $(POSTFIX)_$(NAME)
+	@mv params_$(CONTRIB_NUMBER)/notes.md $(POSTFIX)_$(NAME)/notes.md
 	@awk '\
 		/^CONTRIB_NUMBER[[:space:]]*:=/ { \
 			split($$0, a, ":="); \
@@ -75,15 +75,12 @@ contribute:
 		} \
 		{ print $$0; } \
 	' Makefile > Makefile.tmp && mv Makefile.tmp Makefile
-	git checkout -b contrib/$(NAME)
-	git add $(POSTFIX)_$(NAME)
-	git add Makefile
-	git config user.name "github-actions[bot]"
-	git config user.email "github-actions[bot]@users.noreply.github.com"
-	git commit -m "feat: Add $(NAME)'s contribution"
+	@git checkout -b contrib/$(NAME)
+	@git add $(POSTFIX)_$(NAME)
+	@git add Makefile
+	@git config user.name "$(gh api user --jq .login)"
+	@git config user.email "$(gh api user --jq .email)"
+	@git commit -m "feat: Add $(NAME)'s contribution"
 	git push origin contrib/$(NAME)
-
-	@echo "Creating PR..."
 	gh pr create --head $(NAME):contrib/$(NAME) --base main --repo worm-privacy/trusted-setup
-
 	@echo "Done!"
