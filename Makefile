@@ -83,5 +83,6 @@ contribute:
 	git commit -m "feat: Add $(NAME)'s contribution"
 	git remote set-url origin https://x-access-token:$(PERSONAL_GH_TOKEN)@github.com/$(NAME)/trusted-setup.git
 	GITHUB_TOKEN=$(PERSONAL_GH_TOKEN) git push origin contrib/$(NAME)
+	gh repo set-default worm-privacy/trusted-setup
 	gh pr create --head $(NAME):contrib/$(NAME) --base main --title "$(NAME)'s contribution" --body-file $(POSTFIX)_$(NAME)/notes.md --repo worm-privacy/trusted-setup
 	@echo "Done!"
