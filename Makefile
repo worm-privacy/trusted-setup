@@ -81,6 +81,6 @@ contribute:
 	@git config user.name "$(gh api user --jq .login)"
 	@git config user.email "$(gh api user --jq .email)"
 	@git commit -m "feat: Add $(NAME)'s contribution"
-	git push origin contrib/$(NAME)
+	GITHUB_TOKEN=$(PERSONAL_GH_TOKEN) git push origin contrib/$(NAME)
 	gh pr create --head $(NAME):contrib/$(NAME) --base main --repo worm-privacy/trusted-setup
 	@echo "Done!"
