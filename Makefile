@@ -1,7 +1,7 @@
 .PHONY=contribute
 
 CONTRIB_NUMBER := 1
-PARAMS := 123
+PARAMS := https://github.com/worm-privacy/proof-of-burn/releases/download/v0.1.0/params.tar.gz
 POSTFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
@@ -24,11 +24,11 @@ contribute:
 	
 	@echo "Downloading parameter files..."
 	mkdir -p params_old
-	cd params_old && wget $(WGET_ARGS) -c $(PARAMS).aa
-	cd params_old && wget $(WGET_ARGS) -c $(PARAMS).ab
-	cd params_old && wget $(WGET_ARGS) -c $(PARAMS).ac
-	cd params_old && wget $(WGET_ARGS) -c $(PARAMS).ad
-	cd params_old && wget $(WGET_ARGS) -c $(PARAMS).ae
+	cd params_old && wget -O params.tar.gz.aa $(WGET_ARGS) -c $(PARAMS).aa
+	cd params_old && wget -O params.tar.gz.ab $(WGET_ARGS) -c $(PARAMS).ab
+	cd params_old && wget -O params.tar.gz.ac $(WGET_ARGS) -c $(PARAMS).ac
+	cd params_old && wget -O params.tar.gz.ad $(WGET_ARGS) -c $(PARAMS).ad
+	cd params_old && wget -O params.tar.gz.ae $(WGET_ARGS) -c $(PARAMS).ae
 	@echo "Extracting parameter files..."
 	cat params_old/params.tar.gz.a* > params_old/params.tar.gz
 	cd params_old && tar xzf params.tar.gz
