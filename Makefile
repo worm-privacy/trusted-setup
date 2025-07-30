@@ -93,6 +93,8 @@ contribute:
 		{ print } \
 		' Makefile > Makefile.new && mv Makefile.new Makefile
 
+	@rm -rf $(POSTFIX)_$(NAME)/*.tar.gz*
+
 	@git checkout -b contrib/$(NAME)
 	@git add $(POSTFIX)_$(NAME)
 	@git add Makefile
