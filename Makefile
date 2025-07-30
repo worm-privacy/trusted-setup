@@ -82,6 +82,6 @@ contribute:
 	@git config user.name "github-actions[bot]"
 	@git config user.email "github-actions[bot]@users.noreply.github.com"
 	@git commit -m "feat: Add $(NAME)'s contribution"
-	GITHUB_TOKEN=$(WORKFLOW_GH_TOKEN) git push origin contrib/$(NAME)
+	GITHUB_TOKEN=$(PERSONAL_GH_TOKEN) git push origin contrib/$(NAME)
 	gh pr create --head $(NAME):contrib/$(NAME) --base main --repo worm-privacy/trusted-setup
 	@echo "Done!"
