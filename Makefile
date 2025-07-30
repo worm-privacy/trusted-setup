@@ -34,11 +34,15 @@ contribute:
 
 	mkdir -p params_$(CONTRIB_NUMBER)
 
-	@echo "Contributing to Proof-of-Burn parameters..."
-	@snarkjs zkey contribute params_old/proof_of_burn.zkey params_$(CONTRIB_NUMBER)/proof_of_burn.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)" | tee proof_of_burn_logs.txt
+	#@echo "Contributing to Proof-of-Burn parameters..."
+	#@snarkjs zkey contribute params_old/proof_of_burn.zkey params_$(CONTRIB_NUMBER)/proof_of_burn.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)" | tee proof_of_burn_logs.txt
+	echo "Empty" > proof_of_burn_logs.txt
 
 	@echo "Contributing to Spend parameters..."
 	@snarkjs zkey contribute params_old/spend.zkey params_$(CONTRIB_NUMBER)/spend.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)" | tee spend_logs.txt
+
+	sed -i -e 's/\x1b\[[0-9;]*m//g' proof_of_burn_logs.txt
+	sed -i -e 's/\x1b\[[0-9;]*m//g' spend_logs.txt
 
 	cd params_$(CONTRIB_NUMBER) && tar czf params_$(CONTRIB_NUMBER).tar.gz *.zkey
 	cd params_$(CONTRIB_NUMBER) && split -b1G params_$(CONTRIB_NUMBER).tar.gz params_$(CONTRIB_NUMBER).tar.gz.
@@ -74,6 +78,8 @@ contribute:
 	git checkout -b contrib/$(NAME)
 	git add $(POSTFIX)_$(NAME)
 	git add Makefile
+	git config user.name "github-actions[bot]"
+    git config user.email "github-actions[bot]@users.noreply.github.com"
 	git commit -m "feat: Add $(NAME)'s contribution"
 	git push origin contrib/$(NAME)
 
