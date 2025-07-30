@@ -81,8 +81,7 @@ contribute:
 	@git add Makefile
 	@git config user.name "github-actions[bot]"
 	@git config user.email "github-actions[bot]@users.noreply.github.com"
-	@git remote set-url origin https://x-access-token:$(PERSONAL_GH_TOKEN)@github.com/$(NAME)/trusted-setup.git
 	@git commit -m "feat: Add $(NAME)'s contribution"
-	git push origin contrib/$(NAME)
+	GITHUB_TOKEN=$(REPO_GH_TOKEN) git push origin contrib/$(NAME)
 	gh pr create --head $(NAME):contrib/$(NAME) --base main --repo worm-privacy/trusted-setup
 	@echo "Done!"
