@@ -8,8 +8,7 @@ WGET_ARGS := -q --show-progress
 
 contribute:
 	@echo "$(PERSONAL_GH_TOKEN)" | gh auth login --with-token
-	echo "$(gh api user --jq .login)"
-	echo "$(gh api user --jq .email)"
+	
 	@echo "   __        _____  ____  __  __ "
 	@echo "   \ \      / / _ \|  _ \|  \/  |"
 	@echo "    \ \ /\ / / | | | |_) | |\/| |"
@@ -80,8 +79,8 @@ contribute:
 	@git checkout -b contrib/$(NAME)
 	@git add $(POSTFIX)_$(NAME)
 	@git add Makefile
-	@git config user.name "$(gh api user --jq .login)"
-	@git config user.email "$(gh api user --jq .email)"
+	@git config user.name "$(NAME)"
+	@git config user.email "$(NAME)@users.noreply.github.com"
 	@git commit -m "feat: Add $(NAME)'s contribution"
 	GITHUB_TOKEN=$(PERSONAL_GH_TOKEN) git push origin contrib/$(NAME)
 	gh pr create --head $(NAME):contrib/$(NAME) --base main --repo worm-privacy/trusted-setup
