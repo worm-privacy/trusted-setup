@@ -8,6 +8,7 @@ WGET_ARGS := -q --show-progress
 
 contribute:
 	@echo "$(PERSONAL_GH_TOKEN)" | gh auth login --with-token
+	gh api user --jq .login
 	
 	@echo "   __        _____  ____  __  __ "
 	@echo "   \ \      / / _ \|  _ \|  \/  |"
@@ -79,8 +80,8 @@ contribute:
 	@git checkout -b contrib/$(NAME)
 	@git add $(POSTFIX)_$(NAME)
 	@git add Makefile
-	@git config user.name "$(NAME)"
-	@git config user.email "$(NAME)@users.noreply.github.com"
+	@git config user.name "$(gh api user --jq .login)"
+	@git config user.email "$(gh api user --jq .email)"
 	@git remote set-url origin https://x-access-token:$(PERSONAL_GH_TOKEN)@github.com/$(NAME)/trusted-setup.git
 	@git commit -m "feat: Add $(NAME)'s contribution"
 	git push origin contrib/$(NAME)
