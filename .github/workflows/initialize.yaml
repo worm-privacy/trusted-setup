@@ -24,7 +24,7 @@ jobs:
 
       - name: Unzipping Spend package
         run: |
-          mkdir spend && unzip spend.zip -d spend
+          mkdir spend && unzip spend.zip '*.zkey' '*.r1cs' -d spend && rm -rf spend.zip
 
       - name: Show inside
         run: |
@@ -46,13 +46,17 @@ jobs:
         run: |
           snarkjs zkey verify spend/build/verify_circuit/verify_circuit.r1cs powersOfTau28_hez_final_18.ptau spend/build/verify_circuit/groth16_pkey.zkey
 
+      - name: Remove ptau_18
+        run: |
+          rm --rf powersOfTau28_hez_final_18.ptau
+
       - name: Download Proof of Burn package
         run: |
           wget -q -O proof_of_burn.zip https://circuitscan-artifacts.s3.us-west-2.amazonaws.com/build/proofofburn-unconscious-sapphire-gorilla/pkg.zip
 
       - name: Unzipping Proof-of-Burn package
         run: |
-          mkdir proof_of_burn && unzip proof_of_burn.zip -d proof_of_burn
+          mkdir proof_of_burn && unzip proof_of_burn.zip '*.zkey' '*.r1cs' -d proof_of_burn
 
       - name: Downloading ptau_24
         run: |
