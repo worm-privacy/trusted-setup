@@ -1,0 +1,59 @@
+name: Initialize
+
+on:
+  workflow_dispatch:
+
+jobs:
+  participate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+          persist-credentials: false
+      
+      - name: Install requirements
+        run: |
+          sudo apt install -y wget unzip
+      
+      - name: Download Spend package
+        run: |
+          wget -q -O spend.zip https://circuitscan-artifacts.s3.us-west-2.amazonaws.com/build/spend-nice-olive-raven/pkg.zip
+
+      - name: Unzipping Spend package
+        run: |
+          mkdir spend && unzip spend.zip -d spend
+
+      - name: Show inside
+        run: |
+          tree spend/
+
+      - name: Downloading ptau
+        run: |
+          wget https://storage.googleapis.com/zkevm/ptau/powersOfTau28_hez_final_18.ptau
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install SnarkJS
+        run: |
+          npm i -g snarkjs
+
+      - name: Download GitHub CLI
+        run: |
+          wget -q https://github.com/cli/cli/releases/download/v2.76.1/gh_2.76.1_linux_amd64.deb
+
+      - name: Download Proof of Burn package
+        run: |
+          wget -q -O proof_of_burn.zip https://circuitscan-artifacts.s3.us-west-2.amazonaws.com/build/proofofburn-unconscious-sapphire-gorilla/pkg.zip
+
+      - name: Get CircuitScan output
+        run: |
+          sudo apt install -y wget
+
+      - name: Install GitHub CLI
+        run: |
+          sudo dpkg -i gh_2.76.1_linux_amd64.deb
