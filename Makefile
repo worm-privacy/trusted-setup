@@ -37,9 +37,8 @@ contribute:
 
 	mkdir -p $(POSTFIX)_$(NAME)
 
-	#@echo "Contributing to Proof-of-Burn parameters..."
-	#@snarkjs zkey contribute params_old/proof_of_burn.zkey $(POSTFIX)_$(NAME)/proof_of_burn.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)" | tee proof_of_burn_logs.txt
-	echo Hi > proof_of_burn_logs.txt
+	@echo "Contributing to Proof-of-Burn parameters..."
+	@snarkjs zkey contribute params_old/proof_of_burn.zkey $(POSTFIX)_$(NAME)/proof_of_burn.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)" | tee proof_of_burn_logs.txt
 
 	@echo "Contributing to Spend parameters..."
 	@snarkjs zkey contribute params_old/spend.zkey $(POSTFIX)_$(NAME)/spend.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)" | tee spend_logs.txt
