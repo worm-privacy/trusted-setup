@@ -48,7 +48,7 @@ jobs:
 
       - name: Remove ptau_18
         run: |
-          rm --rf powersOfTau28_hez_final_18.ptau
+          rm -rf powersOfTau28_hez_final_18.ptau
 
       - name: Download Proof of Burn package
         run: |
