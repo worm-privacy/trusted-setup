@@ -40,6 +40,7 @@ jobs:
           mv spend/build/verify_circuit/groth16_pkey.zkey 0000_circuitscan/spend.zkey
           mv proof_of_burn/build/verify_circuit/groth16_pkey.zkey 0000_circuitscan/proof_of_burn.zkey
           tar czf 0000_circuitscan.tar.gz 0000_circuitscan/*
+          rm -rf 0000_circuitscan/*
           split -b1G 0000_circuitscan.tar.gz 0000_circuitscan.tar.gz.
           rm -rf 0000_circuitscan.tar.gz
 
