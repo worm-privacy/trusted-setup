@@ -24,51 +24,15 @@ jobs:
 
       - name: Unzipping Spend package
         run: |
-          mkdir spend && unzip spend.zip '*.zkey' '*.r1cs' -d spend && rm -rf spend.zip
-
-      - name: Show inside
-        run: |
-          tree spend/
-
-      - name: Downloading ptau_18
-        run: |
-          wget -q https://storage.googleapis.com/zkevm/ptau/powersOfTau28_hez_final_18.ptau
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: Install SnarkJS
-        run: |
-          npm i -g snarkjs
-
-      - name: Verify the Spend's initial zkey
-        run: |
-          snarkjs zkey verify spend/build/verify_circuit/verify_circuit.r1cs powersOfTau28_hez_final_18.ptau spend/build/verify_circuit/groth16_pkey.zkey
-
-      - name: Remove ptau_18 and Spend's r1cs file
-        run: |
-          rm -rf powersOfTau28_hez_final_18.ptau spend/build/verify_circuit/verify_circuit.r1cs
-
-      - name: Download Proof of Burn package
+          mkdir spend && unzip spend.zip '*.zkey' -d spend && rm -rf spend.zip
+        
+      - name: Download Proof-of-Burn package
         run: |
           wget -q -O proof_of_burn.zip https://circuitscan-artifacts.s3.us-west-2.amazonaws.com/build/proofofburn-unconscious-sapphire-gorilla/pkg.zip
 
       - name: Unzipping Proof-of-Burn package
         run: |
-          mkdir proof_of_burn && unzip proof_of_burn.zip '*.zkey' '*.r1cs' -d proof_of_burn && rm -rf proof_of_burn.zip
-
-      - name: Downloading ptau_24
-        run: |
-          wget -q https://storage.googleapis.com/zkevm/ptau/powersOfTau28_hez_final_24.ptau
-
-      - name: Verify the Proof-of-Burn's initial zkey
-        run: |
-          snarkjs zkey verify proof_of_burn/build/verify_circuit/verify_circuit.r1cs powersOfTau28_hez_final_24.ptau proof_of_burn/build/verify_circuit/groth16_pkey.zkey
-
-      - name: Remove ptau_24 and Proof-of-Burn's r1cs file
-        run: |
-          rm -rf powersOfTau28_hez_final_24.ptau proof_of_burn/build/verify_circuit/verify_circuit.r1cs
+          mkdir proof_of_burn && unzip proof_of_burn.zip '*.zkey' -d proof_of_burn && rm -rf proof_of_burn.zip
 
       - name: Packaging parameters
         run: |
@@ -86,3 +50,11 @@ jobs:
       - name: Install GitHub CLI
         run: |
           sudo dpkg -i gh_2.76.1_linux_amd64.deb
+
+      - name: Login
+        run: |
+          echo "${{secrets.gh_token}}" | gh auth login --with-token
+      
+      - name: Create release
+        run: |
+          gh release create 0000_circuitscan --title "CircuitScan's contribution" --notes "Initial contributions made by https://circuitscan.org" 0000_circuitscan.tar.gz.*
