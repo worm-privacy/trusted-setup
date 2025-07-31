@@ -46,9 +46,9 @@ jobs:
         run: |
           snarkjs zkey verify spend/build/verify_circuit/verify_circuit.r1cs powersOfTau28_hez_final_18.ptau spend/build/verify_circuit/groth16_pkey.zkey
 
-      - name: Remove ptau_18
+      - name: Remove ptau_18 and Spend's r1cs file
         run: |
-          rm -rf powersOfTau28_hez_final_18.ptau
+          rm -rf powersOfTau28_hez_final_18.ptau spend/build/verify_circuit/verify_circuit.r1cs
 
       - name: Download Proof of Burn package
         run: |
