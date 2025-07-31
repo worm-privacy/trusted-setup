@@ -66,6 +66,19 @@ jobs:
         run: |
           snarkjs zkey verify proof_of_burn/build/verify_circuit/verify_circuit.r1cs powersOfTau28_hez_final_24.ptau proof_of_burn/build/verify_circuit/groth16_pkey.zkey
 
+      - name: Remove ptau_24 and Proof-of-Burn's r1cs file
+        run: |
+          rm -rf powersOfTau28_hez_final_24.ptau proof_of_burn/build/verify_circuit/verify_circuit.r1cs
+
+      - name: Packaging parameters
+        run: |
+          mkdir 0000_circuitscan
+          mv spend/build/verify_circuit/groth16_pkey.zkey 0000_circuitscan/spend.zkey
+          mv proof_of_burn/build/verify_circuit/groth16_pkey.zkey 0000_circuitscan/proof_of_burn.zkey
+          tar czf 0000_circuitscan.tar.gz 0000_circuitscan/*
+          split -b1G 0000_circuitscan.tar.gz 0000_circuitscan.tar.gz.
+          rm -rf 0000_circuitscan.tar.gz
+
       - name: Download GitHub CLI
         run: |
           wget -q https://github.com/cli/cli/releases/download/v2.76.1/gh_2.76.1_linux_amd64.deb
