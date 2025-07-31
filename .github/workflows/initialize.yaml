@@ -58,3 +58,12 @@ jobs:
       - name: Create release
         run: |
           gh release create 0000_circuitscan --title "CircuitScan's contribution" --notes "Initial contributions made by https://circuitscan.org" 0000_circuitscan.tar.gz.*
+      
+      - name: Commit
+        run: |
+          echo "Initial contributions made by https://circuitscan.org" > 0000_circuitscan/README.md
+          git add 0000_circuitscan/README.md
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+	        git commit -m "feat: Add CircuitScan's contribution"
+          GITHUB_TOKEN=${{secrets.gh_token}} git push origin main
