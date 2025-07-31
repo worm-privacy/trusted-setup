@@ -67,4 +67,5 @@ jobs:
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
           git commit -m "feat: Add CircuitScan's contribution"
+          git remote set-url origin https://x-access-token:${{secrets.gh_token}}@github.com/worm-privacy/trusted-setup.git
           GITHUB_TOKEN=${{secrets.gh_token}} git push origin main
