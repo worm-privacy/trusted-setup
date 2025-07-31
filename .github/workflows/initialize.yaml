@@ -65,5 +65,5 @@ jobs:
           git add 0000_circuitscan/README.md
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
-	        git commit -m "feat: Add CircuitScan's contribution"
+          git commit -m "feat: Add CircuitScan's contribution"
           GITHUB_TOKEN=${{secrets.gh_token}} git push origin main
