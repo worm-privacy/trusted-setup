@@ -56,7 +56,7 @@ jobs:
 
       - name: Unzipping Proof-of-Burn package
         run: |
-          mkdir proof_of_burn && unzip proof_of_burn.zip '*.zkey' '*.r1cs' -d proof_of_burn
+          mkdir proof_of_burn && unzip proof_of_burn.zip '*.zkey' '*.r1cs' -d proof_of_burn && rm -rf proof_of_burn.zip
 
       - name: Downloading ptau_24
         run: |
