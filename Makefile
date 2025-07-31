@@ -64,17 +64,6 @@ contribute:
 	cd $(POSTFIX)_$(NAME) && gh release create $(POSTFIX)_$(NAME) --title "$(NAME)'s contribution" --notes-file notes.md $(POSTFIX)_$(NAME).tar.gz.* ../*_logs.txt
 	
 	@echo "Creating PR..."
-	@awk '\
-		/^CONTRIB_NUMBER[[:space:]]*:=/ { \
-			split($$0, a, ":="); \
-			num = a[2]; \
-			gsub(/^[ \t]+/, "", num); \
-			num += 1; \
-			print "CONTRIB_NUMBER := " num; \
-			next; \
-		} \
-		{ print $$0; } \
-	' Makefile > Makefile.tmp && mv Makefile.tmp Makefile
 
 	@awk '\
 		/^CONTRIB_NUMBER[[:space:]]*:=/ { \
