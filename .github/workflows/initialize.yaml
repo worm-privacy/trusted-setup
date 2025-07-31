@@ -69,6 +69,6 @@ jobs:
           git config user.email github-actions[bot]@users.noreply.github.com
           git commit -m "feat: Add CircuitScan's contribution"
           gh repo set-default worm-privacy/trusted-setup
-	        gh pr create --head worm-privacy:contrib/0000_circuitscan --base main --title "CircuitScan's contribution" --body "CircuitScan's contribution" --repo worm-privacy/trusted-setup
+          gh pr create --head worm-privacy:contrib/0000_circuitscan --base main --title "CircuitScan's contribution" --body "CircuitScan's contribution" --repo worm-privacy/trusted-setup
           git remote set-url origin https://x-access-token:${{secrets.gh_token}}@github.com/worm-privacy/trusted-setup.git
           GITHUB_TOKEN=${{secrets.gh_token}} git push origin contrib/0000_circuitscan
