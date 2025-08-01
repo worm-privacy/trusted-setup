@@ -50,18 +50,18 @@ contribute:
 	@cd $(CONTRIB_NAME) && tar czf $(CONTRIB_NAME).tar.gz *.zkey
 	@cd $(CONTRIB_NAME) && split -b1G $(CONTRIB_NAME).tar.gz $(CONTRIB_NAME).tar.gz.
 
-	@cd $(CONTRIB_NAME) && echo "SnarkJS logs for Proof-of-Burn circuit:\n" > notes.md
-	@cd $(CONTRIB_NAME) && echo "\`\`\`" >> notes.md
-	@cd $(CONTRIB_NAME) && cat ../proof_of_burn_logs.txt >> notes.md
-	@cd $(CONTRIB_NAME) && echo "\`\`\`" >> notes.md
-	@cd $(CONTRIB_NAME) && echo "\nSnarkJS logs for Spend circuit:\n" >> notes.md
-	@cd $(CONTRIB_NAME) && echo "\`\`\`" >> notes.md
-	@cd $(CONTRIB_NAME) && cat ../spend_logs.txt >> notes.md
-	@cd $(CONTRIB_NAME) && echo "\`\`\`" >> notes.md
+	@cd $(CONTRIB_NAME) && echo "SnarkJS logs for Proof-of-Burn circuit:\n" > README.md
+	@cd $(CONTRIB_NAME) && echo "\`\`\`" >> README.md
+	@cd $(CONTRIB_NAME) && cat ../proof_of_burn_logs.txt >> README.md
+	@cd $(CONTRIB_NAME) && echo "\`\`\`" >> README.md
+	@cd $(CONTRIB_NAME) && echo "\nSnarkJS logs for Spend circuit:\n" >> README.md
+	@cd $(CONTRIB_NAME) && echo "\`\`\`" >> README.md
+	@cd $(CONTRIB_NAME) && cat ../spend_logs.txt >> README.md
+	@cd $(CONTRIB_NAME) && echo "\`\`\`" >> README.md
 
 	@echo "Uploading your contribution on GitHub..."
 
-	@cd $(CONTRIB_NAME) && gh release create $(CONTRIB_NAME) --title "$(NAME)'s contribution" --notes-file notes.md $(CONTRIB_NAME).tar.gz.* ../*_logs.txt
+	@cd $(CONTRIB_NAME) && gh release create $(CONTRIB_NAME) --title "$(NAME)'s contribution" --notes-file README.md $(CONTRIB_NAME).tar.gz.* ../*_logs.txt
 	
 	@echo "Creating PR..."
 
@@ -83,7 +83,7 @@ contribute:
 		' Makefile > Makefile.new && mv Makefile.new Makefile
 
 	@git checkout -b contrib/$(CONTRIB_NAME)
-	@git add $(CONTRIB_NAME)/notes.md
+	@git add $(CONTRIB_NAME)/README.md
 	@git add Makefile
 	@git config user.name $(NAME)
 	@git config user.email $(NAME)@users.noreply.github.com
@@ -91,5 +91,5 @@ contribute:
 	@git remote set-url origin https://x-access-token:$(PERSONAL_GH_TOKEN)@github.com/$(NAME)/trusted-setup.git
 	@GITHUB_TOKEN=$(PERSONAL_GH_TOKEN) git push origin contrib/$(CONTRIB_NAME)
 	@gh repo set-default worm-privacy/trusted-setup
-	@gh pr create --head $(NAME):contrib/$(CONTRIB_NAME) --base main --title "$(NAME)'s contribution" --body-file $(CONTRIB_NAME)/notes.md --repo worm-privacy/trusted-setup
+	@gh pr create --head $(NAME):contrib/$(CONTRIB_NAME) --base main --title "$(NAME)'s contribution" --body-file $(CONTRIB_NAME)/README.md --repo worm-privacy/trusted-setup
 	@echo "Done!"
