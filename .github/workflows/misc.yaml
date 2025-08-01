@@ -1,0 +1,35 @@
+name: Misc
+
+on:
+  workflow_dispatch:
+
+jobs:
+  misc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+          persist-credentials: false
+      
+      - name: Install requirements
+        run: |
+          sudo apt install -y wget unzip
+      
+      - name: Download Spend package
+        run: |
+          wget -q -O spend.zip https://circuitscan-artifacts.s3.us-west-2.amazonaws.com/build/spend-nice-olive-raven/pkg.zip
+
+      - name: Unzipping Spend package
+        run: |
+          mkdir spend && unzip spend.zip '*.r1cs' '*_cpp/*' -d spend && rm -rf spend.zip
+        
+      - name: Download Proof-of-Burn package
+        run: |
+          wget -q -O proof_of_burn.zip https://circuitscan-artifacts.s3.us-west-2.amazonaws.com/build/proofofburn-unconscious-sapphire-gorilla/pkg.zip
+
+      - name: Unzipping Proof-of-Burn package
+        run: |
+          mkdir proof_of_burn && unzip proof_of_burn.zip '*.r1cs' '*_cpp/*' -d proof_of_burn && rm -rf proof_of_burn.zip
