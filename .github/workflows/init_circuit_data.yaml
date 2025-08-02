@@ -42,8 +42,8 @@ jobs:
           mv proof_of_burn/build/verify_circuit/verify_circuit_cpp/verify_circuit.dat proof_of_burn.dat
           tar czf spend_witness_gen.tar.gz spend/build/verify_circuit/verify_circuit_cpp/*
           tar czf proof_of_burn_witness_gen.tar.gz proof_of_burn/build/verify_circuit/verify_circuit_cpp/*
-          gz spend.r1cs
-          gz proof_of_burn.r1cs
+          gzip spend.r1cs
+          gzip proof_of_burn.r1cs
 
       - name: Download GitHub CLI
         run: |
