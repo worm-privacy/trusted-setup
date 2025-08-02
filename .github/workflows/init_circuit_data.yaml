@@ -1,10 +1,10 @@
-name: Misc
+name: Initialize circuit data
 
 on:
   workflow_dispatch:
 
 jobs:
-  misc:
+  initialize_circuit_data:
     runs-on: ubuntu-latest
 
     steps:
@@ -43,7 +43,6 @@ jobs:
           tar czf spend_witness_gen.tar.gz spend/build/verify_circuit/verify_circuit_cpp/*
           tar czf proof_of_burn_witness_gen.tar.gz proof_of_burn/build/verify_circuit/verify_circuit_cpp/*
           tar czf r1cs.tar.gz spend.r1cs proof_of_burn.r1cs
-          split -b1G r1cs.tar.gz r1cs.tar.gz.
 
       - name: Download GitHub CLI
         run: |
@@ -59,4 +58,4 @@ jobs:
       
       - name: Create release
         run: |
-          gh release create circuit_data --title "R1CS files and witness-generators" --notes "R1CS files and witness-generators" spend_witness_gen.tar.gz proof_of_burn_witness_gen.tar.gz spend.dat proof_of_burn.dat r1cs.tar.gz.*
+          gh release create circuit_data --title "R1CS files and witness-generators" --notes "R1CS files and witness-generators" spend_witness_gen.tar.gz proof_of_burn_witness_gen.tar.gz spend.dat proof_of_burn.dat r1cs.tar.gz
