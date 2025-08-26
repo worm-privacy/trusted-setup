@@ -44,6 +44,10 @@ contribute:
 	@echo "Contributing to Spend parameters..."
 	@snarkjs zkey contribute params_old/spend.zkey $(CONTRIB_NAME)/spend.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)" | tee spend_logs.txt
 
+	@echo "Generating Solidity verifiers..."
+	@snarkjs zkey export solidityverifier $(CONTRIB_NAME)/spend.zkey $(CONTRIB_NAME)/SpendVerifier.sol
+    @snarkjs zkey export solidityverifier $(CONTRIB_NAME)/proof_of_burn.zkey $(CONTRIB_NAME)/ProofOfBurnVerifier.sol
+
 	@sed -i -e 's/\x1b\[[0-9;]*m//g' proof_of_burn_logs.txt
 	@sed -i -e 's/\x1b\[[0-9;]*m//g' spend_logs.txt
 
@@ -61,7 +65,7 @@ contribute:
 
 	@echo "Uploading your contribution on GitHub..."
 
-	@cd $(CONTRIB_NAME) && gh release create $(CONTRIB_NAME) --title "$(NAME)'s contribution" --notes-file README.md $(CONTRIB_NAME).tar.gz.* ../*_logs.txt
+	@cd $(CONTRIB_NAME) && gh release create $(CONTRIB_NAME) --title "$(NAME)'s contribution" --notes-file README.md $(CONTRIB_NAME).tar.gz.* $(CONTRIB_NAME)/*.sol ../*_logs.txt
 	
 	@echo "Creating PR..."
 

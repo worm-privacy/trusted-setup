@@ -18,6 +18,15 @@ jobs:
         run: |
           sudo apt install -y wget unzip
       
+            - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install SnarkJS
+        run: |
+          npm i -g snarkjs
+
+
       - name: Download Spend package
         run: |
           wget -q -O spend.zip https://circuitscan-artifacts.s3.us-west-2.amazonaws.com/build/spend-unlikely-white-gayal/pkg.zip
@@ -39,6 +48,8 @@ jobs:
           mkdir 0000_circuitscan
           mv spend/build/verify_circuit/groth16_pkey.zkey 0000_circuitscan/spend.zkey
           mv proof_of_burn/build/verify_circuit/groth16_pkey.zkey 0000_circuitscan/proof_of_burn.zkey
+          snarkjs zkey export solidityverifier 0000_circuitscan/spend.zkey SpendVerifier.sol
+          snarkjs zkey export solidityverifier 0000_circuitscan/proof_of_burn.zkey ProofOfBurnVerifier.sol
           tar czf 0000_circuitscan.tar.gz 0000_circuitscan/*
           rm -rf 0000_circuitscan/*
           split -b1G 0000_circuitscan.tar.gz 0000_circuitscan.tar.gz.
@@ -58,7 +69,7 @@ jobs:
       
       - name: Create release
         run: |
-          gh release create 0000_circuitscan --title "CircuitScan's contribution" --notes "Initial contributions made by https://circuitscan.org" 0000_circuitscan.tar.gz.*
+          gh release create 0000_circuitscan --title "CircuitScan's contribution" --notes "Initial contributions made by https://circuitscan.org" 0000_circuitscan.tar.gz.* *.sol
       
       - name: Commit
         run: |
