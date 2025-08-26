@@ -56,6 +56,7 @@ contribute:
 	@cd $(CONTRIB_NAME) && tar czf $(CONTRIB_NAME).tar.gz *.zkey
 	@cd $(CONTRIB_NAME) && split -b1G $(CONTRIB_NAME).tar.gz $(CONTRIB_NAME).tar.gz.
 
+	@cd $(CONTRIB_NAME) && echo "Release: https://github.com/$(NAME)/trusted-setup/releases/tag/$(CONTRIB_NAME) \n" > README.md
 	@cd $(CONTRIB_NAME) && echo "SnarkJS logs for Proof-of-Burn circuit:\n" > README.md
 	@cd $(CONTRIB_NAME) && echo "\`\`\`" >> README.md
 	@cd $(CONTRIB_NAME) && cat ../proof_of_burn_logs.txt >> README.md
@@ -64,7 +65,7 @@ contribute:
 	@cd $(CONTRIB_NAME) && echo "\`\`\`" >> README.md
 	@cd $(CONTRIB_NAME) && cat ../spend_logs.txt >> README.md
 	@cd $(CONTRIB_NAME) && echo "\`\`\`" >> README.md
-
+	
 	@echo "Uploading your contribution on GitHub..."
 
 	@cd $(CONTRIB_NAME) && gh release create $(CONTRIB_NAME) --title "$(NAME)'s contribution" --notes-file README.md $(CONTRIB_NAME).tar.gz.* $(CONTRIB_NAME)/*.sol ../*_logs.txt
