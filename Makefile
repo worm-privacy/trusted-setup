@@ -34,6 +34,8 @@ contribute:
 	@cat params_old/params.tar.gz.a* > params_old/params.tar.gz
 	@cd params_old && tar xzf params.tar.gz
 
+	ls params_old
+
 	@rm -rf params_old/*.tar.gz params_old/*.tar.gz.*
 
 	@mkdir -p $(CONTRIB_NAME)
