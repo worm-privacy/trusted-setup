@@ -46,7 +46,7 @@ contribute:
 
 	@echo "Generating Solidity verifiers..."
 	@snarkjs zkey export solidityverifier $(CONTRIB_NAME)/spend.zkey $(CONTRIB_NAME)/SpendVerifier.sol
-    @snarkjs zkey export solidityverifier $(CONTRIB_NAME)/proof_of_burn.zkey $(CONTRIB_NAME)/ProofOfBurnVerifier.sol
+	@snarkjs zkey export solidityverifier $(CONTRIB_NAME)/proof_of_burn.zkey $(CONTRIB_NAME)/ProofOfBurnVerifier.sol
 
 	@sed -i -e 's/\x1b\[[0-9;]*m//g' proof_of_burn_logs.txt
 	@sed -i -e 's/\x1b\[[0-9;]*m//g' spend_logs.txt
