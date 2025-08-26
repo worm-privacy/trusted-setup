@@ -49,7 +49,7 @@ jobs:
           mv proof_of_burn/build/verify_circuit/groth16_pkey.zkey 0000_circuitscan/proof_of_burn.zkey
           snarkjs zkey export solidityverifier 0000_circuitscan/spend.zkey SpendVerifier.sol
           snarkjs zkey export solidityverifier 0000_circuitscan/proof_of_burn.zkey ProofOfBurnVerifier.sol
-          cd 0000_circuitscan && tar czf ../0000_circuitscan.tar.gz *
+          cd 0000_circuitscan && tar czf ../0000_circuitscan.tar.gz && cd ..
           rm -rf 0000_circuitscan/*
           split -b1G 0000_circuitscan.tar.gz 0000_circuitscan.tar.gz.
           rm -rf 0000_circuitscan.tar.gz
