@@ -57,7 +57,7 @@ contribute:
 	@cd $(CONTRIB_NAME) && split -b1G $(CONTRIB_NAME).tar.gz $(CONTRIB_NAME).tar.gz.
 
 	@cd $(CONTRIB_NAME) && echo "Release: https://github.com/$(NAME)/trusted-setup/releases/tag/$(CONTRIB_NAME) \n" > README.md
-	@cd $(CONTRIB_NAME) && echo "SnarkJS logs for Proof-of-Burn circuit:\n" > README.md
+	@cd $(CONTRIB_NAME) && echo "SnarkJS logs for Proof-of-Burn circuit:\n" >> README.md
 	@cd $(CONTRIB_NAME) && echo "\`\`\`" >> README.md
 	@cd $(CONTRIB_NAME) && cat ../proof_of_burn_logs.txt >> README.md
 	@cd $(CONTRIB_NAME) && echo "\`\`\`" >> README.md
