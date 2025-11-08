@@ -28,7 +28,7 @@ jobs:
 
       - name: Download Spend package
         run: |
-          wget -q -O spend.zip https://circuitscan-artifacts.s3.us-west-2.amazonaws.com/build/spend-influential-sapphire-guineafowl/pkg.zip
+          wget -q -O spend.zip https://circuitscan-artifacts.s3.us-west-2.amazonaws.com/build/spend-vocational-lime-hoverfly/pkg.zip
 
       - name: Unzipping Spend package
         run: |
