@@ -40,27 +40,27 @@ contribute:
 
 	@mkdir -p $(CONTRIB_NAME)
 
-	@echo "Contributing to Proof-of-Burn parameters..."
-	@snarkjs zkey contribute params_old/proof_of_burn.zkey $(CONTRIB_NAME)/proof_of_burn.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)" | tee proof_of_burn_logs.txt
+	#@echo "Contributing to Proof-of-Burn parameters..."
+	#@snarkjs zkey contribute params_old/proof_of_burn.zkey $(CONTRIB_NAME)/proof_of_burn.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)" | tee proof_of_burn_logs.txt
 
 	@echo "Contributing to Spend parameters..."
 	@snarkjs zkey contribute params_old/spend.zkey $(CONTRIB_NAME)/spend.zkey --name="$(NAME)" -v --entropy="$(ENTROPY)" | tee spend_logs.txt
 
 	@echo "Generating Solidity verifiers..."
 	@snarkjs zkey export solidityverifier $(CONTRIB_NAME)/spend.zkey $(CONTRIB_NAME)/SpendVerifier.sol
-	@snarkjs zkey export solidityverifier $(CONTRIB_NAME)/proof_of_burn.zkey $(CONTRIB_NAME)/ProofOfBurnVerifier.sol
+	#@snarkjs zkey export solidityverifier $(CONTRIB_NAME)/proof_of_burn.zkey $(CONTRIB_NAME)/ProofOfBurnVerifier.sol
 
-	@sed -i -e 's/\x1b\[[0-9;]*m//g' proof_of_burn_logs.txt
+	#@sed -i -e 's/\x1b\[[0-9;]*m//g' proof_of_burn_logs.txt
 	@sed -i -e 's/\x1b\[[0-9;]*m//g' spend_logs.txt
 
 	@cd $(CONTRIB_NAME) && tar czf $(CONTRIB_NAME).tar.gz *.zkey
 	@cd $(CONTRIB_NAME) && split -b1G $(CONTRIB_NAME).tar.gz $(CONTRIB_NAME).tar.gz.
 
 	@cd $(CONTRIB_NAME) && echo "Release: https://github.com/$(NAME)/trusted-setup/releases/tag/$(CONTRIB_NAME) \n" > README.md
-	@cd $(CONTRIB_NAME) && echo "SnarkJS logs for Proof-of-Burn circuit:\n" >> README.md
-	@cd $(CONTRIB_NAME) && echo "\`\`\`" >> README.md
-	@cd $(CONTRIB_NAME) && cat ../proof_of_burn_logs.txt >> README.md
-	@cd $(CONTRIB_NAME) && echo "\`\`\`" >> README.md
+	#@cd $(CONTRIB_NAME) && echo "SnarkJS logs for Proof-of-Burn circuit:\n" >> README.md
+	#@cd $(CONTRIB_NAME) && echo "\`\`\`" >> README.md
+	#@cd $(CONTRIB_NAME) && cat ../proof_of_burn_logs.txt >> README.md
+	#@cd $(CONTRIB_NAME) && echo "\`\`\`" >> README.md
 	@cd $(CONTRIB_NAME) && echo "\nSnarkJS logs for Spend circuit:\n" >> README.md
 	@cd $(CONTRIB_NAME) && echo "\`\`\`" >> README.md
 	@cd $(CONTRIB_NAME) && cat ../spend_logs.txt >> README.md
