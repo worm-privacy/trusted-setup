@@ -36,7 +36,7 @@ contribute:
 
 	ls params_old
 
-	@rm -rf params_old/*.tar.gz params_old/*.tar.gz.*
+	#@rm -rf params_old/*.tar.gz params_old/*.tar.gz.*
 
 	@mkdir -p $(CONTRIB_NAME)
 
