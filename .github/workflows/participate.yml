@@ -36,4 +36,4 @@ jobs:
 
       - name: Contribute
         run: |
-          make contribute WGET_ARGS=-q PERSONAL_GH_TOKEN=${{secrets.gh_token}}
+          make contribute WGET_ARGS=-q PERSONAL_GH_TOKEN=${{secrets.gh_token}} REMOVE_PARAMS=1

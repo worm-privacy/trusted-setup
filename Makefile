@@ -36,7 +36,7 @@ contribute:
 
 	ls params_old
 
-	#@rm -rf params_old/*.tar.gz params_old/*.tar.gz.*
+	@if [ "$$REMOVE_PARAMS" != "" ]; then rm -rf params_old/*.tar.gz params_old/*.tar.gz.*; fi
 
 	@mkdir -p $(CONTRIB_NAME)
 
