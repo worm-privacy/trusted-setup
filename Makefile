@@ -21,7 +21,7 @@ contribute:
 	@sleep 3
 
 	@echo "Logging in to your GitHub..."
-	@echo "$(PERSONAL_GH_TOKEN)" | gh auth login -s workflow --with-token
+	@echo "$(PERSONAL_GH_TOKEN)" | gh auth login --with-token
 	
 	@echo "Downloading parameter files..."
 	@mkdir -p params_old
