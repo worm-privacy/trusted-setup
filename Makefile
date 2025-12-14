@@ -22,6 +22,8 @@ contribute:
 
 	@echo "Logging in to your GitHub..."
 	@echo "$(PERSONAL_GH_TOKEN)" | gh auth login --with-token
+
+	@gh auth refresh -h github.com -s workflow
 	
 	@echo "Downloading parameter files..."
 	@mkdir -p params_old
