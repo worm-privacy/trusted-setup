@@ -28,7 +28,7 @@ jobs:
 
       - name: Download Spend package
         run: |
-          wget -q -O spend.zip https://circuitscan-artifacts.s3.us-west-2.amazonaws.com/build/spend-vocational-lime-hoverfly/pkg.zip
+          wget -q -O spend.zip https://circuitscan-artifacts.s3.us-west-2.amazonaws.com/build/spend-appropriate-turquoise-lizard/pkg.zip
 
       - name: Unzipping Spend package
         run: |
@@ -36,7 +36,7 @@ jobs:
         
       - name: Download Proof-of-Burn package
         run: |
-          wget -q -O proof_of_burn.zip https://circuitscan-artifacts.s3.us-west-2.amazonaws.com/build/proofofburn-federal-amaranth-tuna/pkg.zip
+          wget -q -O proof_of_burn.zip https://circuitscan-artifacts.s3.us-west-2.amazonaws.com/build/proofofburn-content-yellow-yak/pkg.zip
 
       - name: Unzipping Proof-of-Burn package
         run: |
