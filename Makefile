@@ -68,6 +68,7 @@ contribute:
 	
 	@echo "Uploading your contribution on GitHub..."
 
+	@gh repo set-default $(NAME)/trusted-setup
 	@cd $(CONTRIB_NAME) && gh release create $(CONTRIB_NAME) --title "$(NAME)'s contribution" --notes-file README.md $(CONTRIB_NAME).tar.gz.* *.sol ../*_logs.txt
 	
 	@echo "Creating PR..."
