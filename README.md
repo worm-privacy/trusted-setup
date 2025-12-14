@@ -6,7 +6,7 @@ Scripts used to perform the trusted setup ceremony for WORM Privacy circuits.
 
 ## Step 1. Install the requirements
 
-1. Install `wget` and `jq`: `sudo apt install wget jq`
+1. Install `wget`: `sudo apt install wget`
 2. Install NodeJS: https://nodejs.org/en/download
 3. Install SnarkJS: `npm i -g snarkjs`
 4. Install GitHub CLI: https://cli.github.com/
