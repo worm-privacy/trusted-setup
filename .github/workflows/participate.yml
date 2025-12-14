@@ -24,7 +24,7 @@ jobs:
 
       - name: Install requirements
         run: |
-          sudo apt install -y wget jq
+          sudo apt install -y wget
 
       - name: Download GitHub CLI
         run: |
