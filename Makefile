@@ -7,6 +7,7 @@ ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
 CONTRIB_NAME := $(PREFIX)_$(NAME)
 WGET_ARGS := -q --show-progress
+PERSONAL_NOTE := ""
 
 contribute:
 	@echo "   __        _____  ____  __  __ "
@@ -57,7 +58,8 @@ contribute:
 	@cd $(CONTRIB_NAME) && split -b1G $(CONTRIB_NAME).tar.gz $(CONTRIB_NAME).tar.gz.
 
 	@cd $(CONTRIB_NAME) && echo "Release: https://github.com/$(NAME)/trusted-setup/releases/tag/$(CONTRIB_NAME) \n" > README.md
-	@cd $(CONTRIB_NAME) && echo "Parent params: $(PARAMS) \n" > README.md
+	@cd $(CONTRIB_NAME) && echo "Note: $(PERSONAL_NOTE) \n" >> README.md
+	@cd $(CONTRIB_NAME) && echo "Parent params: $(PARAMS) \n" >> README.md
 	@cd $(CONTRIB_NAME) && echo "SnarkJS logs for Proof-of-Burn circuit:\n" >> README.md
 	@cd $(CONTRIB_NAME) && echo "\`\`\`" >> README.md
 	@cd $(CONTRIB_NAME) && cat ../proof_of_burn_logs.txt >> README.md

@@ -31,4 +31,6 @@ Scripts used to perform the trusted setup ceremony for WORM Privacy circuits.
 ## Step 4. Participate
 
 1. Go to the forked repo: `cd trusted-setup`.
-2. Run: `make contribute PERSONAL_GH_TOKEN=[YOUR GITHUB TOKEN]`
+2. Run: `make contribute PERSONAL_NOTE='LFG!' PERSONAL_GH_TOKEN=[YOUR GITHUB TOKEN]`
+
+(You can attach a custom personal note to your contribution through the `PERSONAL_NOTE` parameter!)
