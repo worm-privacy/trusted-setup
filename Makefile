@@ -1,7 +1,7 @@
 .PHONY=contribute
 
-CONTRIB_NUMBER := 5
-PARAMS := https://github.com/d3mage/trusted-setup/releases/download/0004_d3mage/0004_d3mage.tar.gz
+CONTRIB_NUMBER := 6
+PARAMS := https://github.com/lolloekk/trusted-setup/releases/download/0005_lolloekk/0005_lolloekk.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
