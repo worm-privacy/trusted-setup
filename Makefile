@@ -1,7 +1,7 @@
 .PHONY=contribute
 
-CONTRIB_NUMBER := 4
-PARAMS := https://github.com/lightfromheaven1/trusted-setup/releases/download/0003_lightfromheaven1/0003_lightfromheaven1.tar.gz
+CONTRIB_NUMBER := 5
+PARAMS := https://github.com/d3mage/trusted-setup/releases/download/0004_d3mage/0004_d3mage.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
