@@ -22,7 +22,7 @@ Scripts used to perform the trusted setup ceremony for WORM Privacy circuits.
 
 ## Step 3.  Fork this repository
 
-1. Click the **Fork** button at the top of this repository’s page. (Remove the old fork and create a new one if you have already forked the repo!) (The name of the fork should be `"trusted-setup"`)
+1. Click the **Fork** button at the top of this repository’s page. (Remove the old fork and create a new one if you have already forked the repo!) (The name of the fork should be `trusted-setup`)
 2. Clone your forked repository to your local machine using the following command:
    ```bash
    git clone https://github.com/[YOUR_GITHUB_USERNAME]/trusted-setup
