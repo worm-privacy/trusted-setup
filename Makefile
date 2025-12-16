@@ -10,12 +10,6 @@ WGET_ARGS := -q --show-progress
 PERSONAL_NOTE := ""
 
 verify:
-	@echo "Downloading R1CS files..."
-	wget -O proof_of_burn.r1cs.gz $(WGET_ARGS) -c https://github.com/worm-privacy/trusted-setup/releases/download/circuit_data/proof_of_burn.r1cs.gz
-	wget -O spend.r1cs.gz $(WGET_ARGS) -c https://github.com/worm-privacy/trusted-setup/releases/download/circuit_data/spend.r1cs.gz
-	gunzip proof_of_burn.r1cs.gz
-	gunzip spend.r1cs.gz
-
 	@echo "Downloading parameter files..."
 	@mkdir -p params_old
 	cd params_old && wget -O params.tar.gz.aa $(WGET_ARGS) -c $(PARAMS).aa
@@ -27,6 +21,12 @@ verify:
 	@cat params_old/params.tar.gz.a* > params_old/params.tar.gz
 	@cd params_old && tar xzf params.tar.gz
 	@if [ "$$REMOVE_PARAMS" != "" ]; then rm -rf params_old/*.tar.gz params_old/*.tar.gz.*; fi
+
+	@echo "Downloading R1CS files..."
+	wget -O proof_of_burn.r1cs.gz $(WGET_ARGS) -c https://github.com/worm-privacy/trusted-setup/releases/download/circuit_data/proof_of_burn.r1cs.gz
+	wget -O spend.r1cs.gz $(WGET_ARGS) -c https://github.com/worm-privacy/trusted-setup/releases/download/circuit_data/spend.r1cs.gz
+	gunzip proof_of_burn.r1cs.gz
+	gunzip spend.r1cs.gz
 
 	@echo "Downloading Powers-of-Tau file..."
 	wget -O powersOfTau28_hez_final_24.ptau $(WGET_ARGS) -c https://storage.googleapis.com/zkevm/ptau/powersOfTau28_hez_final_24.ptau
