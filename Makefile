@@ -9,6 +9,31 @@ CONTRIB_NAME := $(PREFIX)_$(NAME)
 WGET_ARGS := -q --show-progress
 PERSONAL_NOTE := ""
 
+verify:
+	@echo "Downloading R1CS files..."
+	wget -O proof_of_burn.r1cs.gz $(WGET_ARGS) -c https://github.com/worm-privacy/trusted-setup/releases/download/circuit_data/proof_of_burn.r1cs.gz
+	wget -O spend.r1cs.gz $(WGET_ARGS) -c https://github.com/worm-privacy/trusted-setup/releases/download/circuit_data/spend.r1cs.gz
+	gunzip proof_of_burn.r1cs.gz
+	gunzip spend.r1cs.gz
+
+	@echo "Downloading parameter files..."
+	@mkdir -p params_old
+	cd params_old && wget -O params.tar.gz.aa $(WGET_ARGS) -c $(PARAMS).aa
+	cd params_old && wget -O params.tar.gz.ab $(WGET_ARGS) -c $(PARAMS).ab
+	cd params_old && wget -O params.tar.gz.ac $(WGET_ARGS) -c $(PARAMS).ac
+	cd params_old && wget -O params.tar.gz.ad $(WGET_ARGS) -c $(PARAMS).ad
+	cd params_old && wget -O params.tar.gz.ae $(WGET_ARGS) -c $(PARAMS).ae
+	@echo "Extracting parameter files..."
+	@cat params_old/params.tar.gz.a* > params_old/params.tar.gz
+	@cd params_old && tar xzf params.tar.gz
+	@if [ "$$REMOVE_PARAMS" != "" ]; then rm -rf params_old/*.tar.gz params_old/*.tar.gz.*; fi
+
+	@echo "Downloading Powers-of-Tau file..."
+	wget -O powersOfTau28_hez_final_24.ptau $(WGET_ARGS) -c https://storage.googleapis.com/zkevm/ptau/powersOfTau28_hez_final_24.ptau
+
+	snarkjs zkey verify proof_of_burn.r1cs powersOfTau28_hez_final_24.ptau proof_of_burn.zkey
+	snarkjs zkey verify spend.r1cs powersOfTau28_hez_final_24.ptau spend.zkey
+
 contribute:
 	@echo "   __        _____  ____  __  __ "
 	@echo "   \ \      / / _ \|  _ \|  \/  |"
