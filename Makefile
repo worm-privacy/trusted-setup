@@ -1,7 +1,7 @@
 .PHONY=contribute
 
-CONTRIB_NUMBER := 14
-PARAMS := https://github.com/hidayahhtaufik/trusted-setup/releases/download/0013_hidayahhtaufik/0013_hidayahhtaufik.tar.gz
+CONTRIB_NUMBER := 15
+PARAMS := https://github.com/0xishaq/trusted-setup/releases/download/0014_0xishaq/0014_0xishaq.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
