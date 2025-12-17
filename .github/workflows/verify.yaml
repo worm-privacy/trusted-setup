@@ -26,6 +26,6 @@ jobs:
         run: |
           sudo apt install -y wget gzip
 
-      - name: Contribute
+      - name: Verify
         run: |
           make verify WGET_ARGS=-q REMOVE_PARAMS=1
