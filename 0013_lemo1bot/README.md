@@ -1,6 +1,6 @@
 Release: https://github.com/lemo1bot/trusted-setup/releases/tag/0013_lemo1bot 
 
-Note: LFG! 
+Note:  
 
 Parent params: https://github.com/frostnova0x/trusted-setup/releases/download/0012_frostnova0x/0012_frostnova0x.tar.gz 
 
@@ -482,10 +482,10 @@ SnarkJS logs for Proof-of-Burn circuit:
 		3eed30ce ebfbca1a 73e539e2 cac95f5a
 		01437f97 b1f8e7ff 3a363cf0 c3528830
 [INFO]  snarkJS: Contribution Hash: 
-		d8c44db5 f4d64673 782f8cf2 96e47fa5
-		e6b2199b 5388c467 6e10140f 9c198822
-		20fc3031 b95f7ed3 47372b9f f8ccff48
-		3a5e20b7 38c54134 ef30cc6b b876623d
+		87c5df6e c771a216 6d6908a8 1a4fdb2c
+		47db16a0 3f7ac63e a766b071 827edabb
+		4dd5db09 f97eb3a2 84228521 21d919dc
+		591f77a9 d3f77ebb 7f08a3c3 93303f53
 ```
 
 SnarkJS logs for Spend circuit:
@@ -504,8 +504,8 @@ SnarkJS logs for Spend circuit:
 		c863bcc5 489892c3 2842b613 bb17d7fc
 		b0537a7e 17dba5a4 61e3a8fe c7436591
 [INFO]  snarkJS: Contribution Hash: 
-		f66e1d60 a269da57 4f71d81e c1b92c2d
-		e81acb05 fb5c99e5 a45bb5be 1488e877
-		62c56860 fe318664 3f0048e6 4c1532c0
-		1de014e4 9406ad20 18d9acff 96a414de
+		8e9ad518 bba2abc7 0fe0cd9c 720c2371
+		fb5eb6d9 5cfd97a9 ae838806 bfb18e63
+		825c2ef2 3cc40983 00ed0948 26cb9e32
+		029cac5a 3c390e10 1a84c70c e89603de
 ```

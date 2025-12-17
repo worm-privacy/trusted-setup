@@ -1,9 +1,11 @@
 .PHONY=contribute
 
-CONTRIB_NUMBER := 13
-PARAMS := https://github.com/frostnova0x/trusted-setup/releases/download/0012_frostnova0x/0012_frostnova0x.tar.gz
+
+CONTRIB_NUMBER := 14
+PARAMS := https://github.com/lemo1bot/trusted-setup/releases/download/0013_lemo1bot/0013_lemo1bot.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
-ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
+
+ENTROPY := $(shell LC_ALL=C tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := lemo1bot
 CONTRIB_NAME := $(PREFIX)_$(NAME)
 WGET_ARGS := -q --show-progress
@@ -46,8 +48,10 @@ contribute:
 	@echo
 	@sleep 3
 
+
 	@echo "Logging in to your GitHub..."
-	@echo "$(PERSONAL_GH_TOKEN)" | gh auth login --with-token
+	# @echo "$(PERSONAL_GH_TOKEN)" | gh auth login --with-token
+	@gh auth status || echo "Please login with: gh auth login"
 	
 	@echo "Downloading parameter files..."
 	@mkdir -p params_old
@@ -124,8 +128,8 @@ contribute:
 	@git config user.name $(NAME)
 	@git config user.email $(NAME)@users.noreply.github.com
 	@git commit -m "feat: Add $(NAME)'s contribution"
-	@git remote set-url origin https://x-access-token:$(PERSONAL_GH_TOKEN)@github.com/$(NAME)/trusted-setup.git
-	@GITHUB_TOKEN=$(PERSONAL_GH_TOKEN) git push origin contrib/$(CONTRIB_NAME)
+	@git remote set-url origin https://github.com/$(NAME)/trusted-setup.git
+	@git push origin contrib/$(CONTRIB_NAME)
 	@gh repo set-default worm-privacy/trusted-setup
 	@gh pr create --head $(NAME):contrib/$(CONTRIB_NAME) --base main --title "$(NAME)'s contribution" --body-file $(CONTRIB_NAME)/README.md --repo worm-privacy/trusted-setup
 	@echo "Done!"
