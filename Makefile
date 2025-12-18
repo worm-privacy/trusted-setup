@@ -1,7 +1,7 @@
 .PHONY=contribute
 
-CONTRIB_NUMBER := 20
-PARAMS := https://github.com/will-web3/trusted-setup/releases/download/0019_will-web3/0019_will-web3.tar.gz
+CONTRIB_NUMBER := 21
+PARAMS := https://github.com/metatarzxyz/trusted-setup/releases/download/0020_metatarzxyz/0020_metatarzxyz.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
