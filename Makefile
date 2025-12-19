@@ -1,7 +1,7 @@
 .PHONY=contribute
 
-CONTRIB_NUMBER := 23
-PARAMS := https://github.com/meisamtaher/trusted-setup/releases/download/0022_meisamtaher/0022_meisamtaher.tar.gz
+CONTRIB_NUMBER := 24
+PARAMS := https://github.com/walle1872/trusted-setup/releases/download/0023_walle1872/0023_walle1872.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
