@@ -1,10 +1,10 @@
 .PHONY=contribute
 
-CONTRIB_NUMBER := 22
-PARAMS := https://github.com/coladrinkingbear/trusted-setup/releases/download/0021_coladrinkingbear/0021_coladrinkingbear.tar.gz
+CONTRIB_NUMBER := 23
+PARAMS := https://github.com/meisamtaher/trusted-setup/releases/download/0022_meisamtaher/0022_meisamtaher.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
-NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
+NAME := meisamtaher
 CONTRIB_NAME := $(PREFIX)_$(NAME)
 WGET_ARGS := -q --show-progress
 PERSONAL_NOTE := ""
