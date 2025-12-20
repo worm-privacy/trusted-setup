@@ -1,7 +1,7 @@
 .PHONY=contribute
 
-CONTRIB_NUMBER := 28
-PARAMS := https://github.com/reb0rn21/trusted-setup/releases/download/0027_reb0rn21/0027_reb0rn21.tar.gz
+CONTRIB_NUMBER := 29
+PARAMS := https://github.com/megabyte0x/trusted-setup/releases/download/0028_megabyte0x/0028_megabyte0x.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
