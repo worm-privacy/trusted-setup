@@ -1,7 +1,7 @@
 .PHONY=contribute
 
-CONTRIB_NUMBER := 29
-PARAMS := https://github.com/minezwinez/trusted-setup/releases/download/0028_minezwinez/0028_minezwinez.tar.gz
+CONTRIB_NUMBER := 30
+PARAMS := https://github.com/sugarone1/trusted-setup/releases/download/0029_sugarone1/0029_sugarone1.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
