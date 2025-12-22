@@ -1,7 +1,7 @@
 .PHONY=contribute
 
-CONTRIB_NUMBER := 32
-PARAMS := https://github.com/nullity00/trusted-setup/releases/download/0031_nullity00/0031_nullity00.tar.gz
+CONTRIB_NUMBER := 33
+PARAMS := https://github.com/zackozacko/trusted-setup/releases/download/0032_zackozacko/0032_zackozacko.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
