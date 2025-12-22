@@ -1,7 +1,7 @@
 .PHONY=contribute
 
-CONTRIB_NUMBER := 34
-PARAMS := https://github.com/pgc121/trusted-setup/releases/download/0033_pgc121/0033_pgc121.tar.gz
+CONTRIB_NUMBER := 35
+PARAMS := https://github.com/dmpierre/trusted-setup/releases/download/0034_dmpierre/0034_dmpierre.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
