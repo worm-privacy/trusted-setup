@@ -1,7 +1,7 @@
 .PHONY=contribute
 
-CONTRIB_NUMBER := 37
-PARAMS := https://github.com/fyrefoxiest/trusted-setup/releases/download/0036_fyrefoxiest/0036_fyrefoxiest.tar.gz
+CONTRIB_NUMBER := 38
+PARAMS := https://github.com/Proairdrop/trusted-setup/releases/download/0037_Proairdrop/0037_Proairdrop.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
