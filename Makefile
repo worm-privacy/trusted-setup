@@ -1,7 +1,7 @@
 .PHONY=contribute
 
-CONTRIB_NUMBER := 34
-PARAMS := https://github.com/pgc121/trusted-setup/releases/download/0033_pgc121/0033_pgc121.tar.gz
+CONTRIB_NUMBER := 38
+PARAMS := https://github.com/Miningelectroneum/trusted-setup/releases/download/0037_Miningelectroneum/0037_Miningelectroneum.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
@@ -28,12 +28,12 @@ verify:
 	gunzip proof_of_burn.r1cs.gz
 	gunzip spend.r1cs.gz
 
-	@echo "Downloading Powers-of-Tau file..."
-	wget -O powersOfTau28_hez_final_24.ptau $(WGET_ARGS) -c https://storage.googleapis.com/zkevm/ptau/powersOfTau28_hez_final_24.ptau
 	wget -O powersOfTau28_hez_final_18.ptau $(WGET_ARGS) -c https://storage.googleapis.com/zkevm/ptau/powersOfTau28_hez_final_18.ptau
-
-	snarkjs zkey verify proof_of_burn.r1cs powersOfTau28_hez_final_24.ptau params_old/proof_of_burn.zkey
 	snarkjs zkey verify spend.r1cs powersOfTau28_hez_final_18.ptau params_old/spend.zkey
+
+	wget -O powersOfTau28_hez_final_24.ptau $(WGET_ARGS) -c https://storage.googleapis.com/zkevm/ptau/powersOfTau28_hez_final_24.ptau
+	snarkjs zkey verify proof_of_burn.r1cs powersOfTau28_hez_final_24.ptau params_old/proof_of_burn.zkey
+	
 
 contribute:
 	@echo "   __        _____  ____  __  __ "
