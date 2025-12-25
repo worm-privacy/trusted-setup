@@ -8,7 +8,6 @@ NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[
 CONTRIB_NAME := $(PREFIX)_$(NAME)
 WGET_ARGS := -q --show-progress
 PERSONAL_NOTE := ""
-
 verify:
 	@echo "Downloading parameter files..."
 	@mkdir -p params_old
