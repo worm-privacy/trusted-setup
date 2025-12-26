@@ -1,7 +1,7 @@
 .PHONY: contribute
 
-CONTRIB_NUMBER := 41
-PARAMS := https://github.com/Skyge/trusted-setup/releases/download/0040_Skyge/0040_Skyge.tar.gz
+CONTRIB_NUMBER := 42
+PARAMS := https://github.com/zansnode/trusted-setup/releases/download/0041_zansnode/0041_zansnode.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
@@ -97,7 +97,7 @@ contribute:
 	
 	@echo "Uploading your contribution on GitHub..."
 
-	@gh repo set-default $(NAME)/trusted-setup
+	# gh repo set-default worm-privacy/trusted-setup
 	@cd $(CONTRIB_NAME) && gh release create $(CONTRIB_NAME) --title "$(NAME)'s contribution" --notes-file README.md $(CONTRIB_NAME).tar.gz.* *.sol ../*_logs.txt
 	
 	@echo "Creating PR..."
@@ -127,6 +127,5 @@ contribute:
 	@git commit -m "feat: Add $(NAME)'s contribution"
 	@git remote set-url origin https://x-access-token:$(PERSONAL_GH_TOKEN)@github.com/$(NAME)/trusted-setup.git
 	@GITHUB_TOKEN=$(PERSONAL_GH_TOKEN) git push origin contrib/$(CONTRIB_NAME)
-	@gh repo set-default worm-privacy/trusted-setup
 	@gh pr create --head $(NAME):contrib/$(CONTRIB_NAME) --base main --title "$(NAME)'s contribution" --body-file $(CONTRIB_NAME)/README.md --repo worm-privacy/trusted-setup
 	@echo "Done!"
