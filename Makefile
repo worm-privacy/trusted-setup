@@ -1,7 +1,7 @@
 .PHONY: contribute
 
-CONTRIB_NUMBER := 42
-PARAMS := https://github.com/nayemlengta/trusted-setup/releases/download/0041_nayemlengta/0041_nayemlengta.tar.gz
+CONTRIB_NUMBER := 43
+PARAMS := https://github.com/Daniboi214/trusted-setup/releases/download/0042_Daniboi214/0042_Daniboi214.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
