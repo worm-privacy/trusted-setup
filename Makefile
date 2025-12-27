@@ -97,7 +97,7 @@ contribute:
 	
 	@echo "Uploading your contribution on GitHub..."
 
-	# @gh repo set-default $(NAME)/trusted-setup
+	# repo set-default $(NAME)/trusted-setup
 	@cd $(CONTRIB_NAME) && gh release create $(CONTRIB_NAME) --title "$(NAME)'s contribution" --notes-file README.md $(CONTRIB_NAME).tar.gz.* *.sol ../*_logs.txt
 	
 	@echo "Creating PR..."
@@ -127,6 +127,6 @@ contribute:
 	@git commit -m "feat: Add $(NAME)'s contribution"
 	@git remote set-url origin https://x-access-token:$(PERSONAL_GH_TOKEN)@github.com/$(NAME)/trusted-setup.git
 	@GITHUB_TOKEN=$(PERSONAL_GH_TOKEN) git push origin contrib/$(CONTRIB_NAME)
-	# @gh repo set-default worm-privacy/trusted-setup
+	# repo set-default worm-privacy/trusted-setup
 	@gh pr create --head $(NAME):contrib/$(CONTRIB_NAME) --base main --title "$(NAME)'s contribution" --body-file $(CONTRIB_NAME)/README.md --repo worm-privacy/trusted-setup
 	@echo "Done!"
