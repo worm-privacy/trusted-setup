@@ -1,7 +1,7 @@
 .PHONY: contribute
 
-CONTRIB_NUMBER := 44
-PARAMS := https://github.com/0xcrystals/trusted-setup/releases/download/0043_0xcrystals/0043_0xcrystals.tar.gz
+CONTRIB_NUMBER := 45
+PARAMS := https://github.com/zansnode/trusted-setup/releases/download/0044_zansnode/0044_zansnode.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
