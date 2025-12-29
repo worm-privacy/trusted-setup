@@ -1,7 +1,7 @@
 .PHONY: contribute
 
-CONTRIB_NUMBER := 49
-PARAMS := https://github.com/mochiexude/trusted-setup/releases/download/0048_mochiexude/0048_mochiexude.tar.gz
+CONTRIB_NUMBER := 50
+PARAMS := https://github.com/zansnode/trusted-setup/releases/download/0049_zansnode/0049_zansnode.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
