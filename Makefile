@@ -1,7 +1,7 @@
 .PHONY: contribute
 
-CONTRIB_NUMBER := 55
-PARAMS := https://github.com/ozihatake77/trusted-setup/releases/download/0054_ozihatake77/0054_ozihatake77.tar.gz
+CONTRIB_NUMBER := 56
+PARAMS := https://github.com/warpathhh01/trusted-setup/releases/download/0055_warpathhh01/0055_warpathhh01.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
