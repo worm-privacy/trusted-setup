@@ -1,7 +1,7 @@
 .PHONY: contribute
 
-CONTRIB_NUMBER := 63
-PARAMS := https://github.com/xingharia/trusted-setup/releases/download/0062_xingharia/0062_xingharia.tar.gz
+CONTRIB_NUMBER := 64
+PARAMS := https://github.com/123Sisimpur/trusted-setup/releases/download/0063_123Sisimpur/0063_123Sisimpur.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
