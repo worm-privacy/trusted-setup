@@ -1,7 +1,7 @@
 .PHONY: contribute
 
-CONTRIB_NUMBER := 66
-PARAMS := https://github.com/veliciaeth/trusted-setup/releases/download/0065_veliciaeth/0065_veliciaeth.tar.gz
+CONTRIB_NUMBER := 67
+PARAMS := https://github.com/kuncikayu/trusted-setup/releases/download/0066_kuncikayu/0066_kuncikayu.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
