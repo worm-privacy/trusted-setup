@@ -509,3 +509,31 @@ SnarkJS logs for Spend circuit:
 		08219df8 b6b7b8be 4cc5568a 1b1ef447
 		67490928 75e64748 6ab3f467 f39279e0
 ```
+# Trusted Setup Contribution – 0068_Abdulqudr
+
+Contributor: **Abdulqudr**
+
+This folder references my contribution to the WORM trusted setup ceremony.
+
+## 🔗 Contribution Artifacts (Release)
+
+All parameter files, zkeys, and generated artifacts are published as GitHub
+release assets here:
+
+👉 https://github.com/Abdulqudr/trusted-setup/releases/tag/0068_Abdulqudr
+
+Due to GitHub size limits and project guidelines, large binary files are **not**
+committed directly to the repository.
+
+## ✅ Contribution Details
+
+- Contribution number: **0068**
+- Ceremony: WORM Trusted Setup
+- Environment: VPS (Linux)
+- Tooling: snarkjs, Node.js, wget
+
+Hashes and verification data are included in the release assets.
+
+
+
+
