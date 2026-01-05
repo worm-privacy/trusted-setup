@@ -1,10 +1,10 @@
 .PHONY: contribute
 
-CONTRIB_NUMBER := 71
-PARAMS := https://github.com/pookiebear57/trusted-setup/releases/download/0070_pookiebear57/0070_pookiebear57.tar.gz
+CONTRIB_NUMBER := 72
+PARAMS := https://github.com/Mubaola23/trusted-setup/releases/download/0071_Mubaola23/0071_Mubaola23.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
-ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
-NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
+ENTROPY := $(shell LC_ALL=C tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
+NAME := $(shell git remote get-url origin | awk -F'[:/]' '{print $$(NF-1)}')
 CONTRIB_NAME := $(PREFIX)_$(NAME)
 WGET_ARGS := -q --show-progress
 PERSONAL_NOTE := ""
