@@ -1,7 +1,7 @@
 .PHONY: contribute
 
-CONTRIB_NUMBER := 83
-PARAMS := https://github.com/worm-privacy/trusted-setup/releases/download/0082_worm-privacy/0082_worm-privacy.tar.gz
+CONTRIB_NUMBER := 84
+PARAMS := https://github.com/worm-privacy/trusted-setup/releases/download/final/final.tar.gz
 PREFIX := $(shell printf "%0*d" 4 $(CONTRIB_NUMBER))
 ENTROPY := $(shell tr -dc A-Za-z0-9 </dev/urandom | head -c 128; echo)
 NAME := $(shell git remote get-url origin | sed -E 's#(git@|https://)github.com[:/](.+)/.+(.git)?#\2#')
